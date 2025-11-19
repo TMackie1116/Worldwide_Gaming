@@ -1,0 +1,4 @@
+data/largefiles/history_ps.csv filter=lfs diff=lfs merge=lfs -text
+data/largefiles/history_steam.csv filter=lfs diff=lfs merge=lfs -text
+data/largefiles/achievements_steam.csv filter=lfs diff=lfs merge=lfs -text
+data/largefiles/test_data.csv filter=lfs diff=lfs merge=lfs -text
