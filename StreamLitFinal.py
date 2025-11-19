@@ -17,8 +17,8 @@ def load_data(path):
     return df
 
 # Loading Data
-master_df = load_data("data/raw/test_data.csv")
-map_df_raw = load_data("data/raw/world_map_data.csv")
+master_df=load_data("data/largefiles/test_data.csv")
+map_df_raw=load_data("data/raw/world_map_data.csv")
 
 # Sidebar Filters
 st.sidebar.title("Filters")
