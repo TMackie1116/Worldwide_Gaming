@@ -18,7 +18,8 @@ def load_data(path):
 
 # Loading Data
 master_df=load_data("data/largefiles/test_data.csv")
-map_df_raw=load_data("data/raw/World_Map_Data.csv")
+map_df_raw=load_data("data/largefiles/test_data.csv")
+#map_df_raw=load_data("data/raw/World_Map_Data.csv")
 
 # Sidebar Filters
 st.sidebar.title("Filters")
