@@ -47,7 +47,7 @@ selected_games_map=st.sidebar.multiselect("Game", games_map, default=["All"], ke
 # Bar Plot Filters
 st.sidebar.header("Bar Plot Filters")
 countries_bar=["All"]+sorted(master_df["country"].dropna().unique())
-selected_bar_country=st.sidebar.selectbox("Country", countries_bar, key="bar_country")
+selected_bar_country=st.sidebar.multiselect("Country", countries_bar, key="bar_country")
 platforms_bar=["All"]+sorted(master_df["platform"].dropna().unique())
 selected_platforms_bar=st.sidebar.multiselect("Platform", platforms_bar, default=["All"], key="bar_platforms")
 genres_bar=["All"]+sorted(master_df["genres"].dropna().unique())
