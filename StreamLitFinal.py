@@ -198,21 +198,37 @@ st.dataframe(global_table_df, hide_index=True)
 # Country-Level Breakdown
 st.header("Country-Level Player Breakdown")
 country_table_df=master_df.copy()
+
+# Date filter
 country_table_df=country_table_df[
-    (country_table_df["date"]>=pd.Timestamp(selected_date[0]))
-    &(country_table_df["date"]<=pd.Timestamp(selected_date[1]))
-]
+    (country_table_df["date"]>=pd.Timestamp(selected_date[0]))&
+    (country_table_df["date"]<=pd.Timestamp(selected_date[1]))]
+
+# Apply table filters
+if "All" not in selected_table_countries:
+    country_table_df=country_table_df[country_table_df["country"].isin(selected_table_countries)]
+
+if "All" not in selected_table_games:
+    country_table_df=country_table_df[country_table_df["title"].isin(selected_table_games)]
+
+if "All" not in selected_table_platforms:
+    country_table_df=country_table_df[country_table_df["platform"].isin(selected_table_platforms)]
+
+if "All" not in selected_table_genres:
+    country_table_df=country_table_df[country_table_df["genres"].isin(selected_table_genres)]
+
+# Aggregate
 country_table_df=(
     country_table_df.groupby(["country","title","platform"])
     .agg(players=("playerid","nunique"))
     .reset_index()
 )
+
 country_pivot=(
     country_table_df.pivot_table(
-        index=["country","title"], columns="platform", values="players", fill_value=0
-    )
-    .reset_index()
-)
+        index=["country","title"],columns="platform",values="players",fill_value=0).reset_index())
+
 country_pivot["total_players"]=country_pivot.get("ps",0)+country_pivot.get("steam",0)
-country_pivot=country_pivot.sort_values("total_players", ascending=False)
-st.dataframe(country_pivot, hide_index=True)
+country_pivot=country_pivot.sort_values("total_players",ascending=False)
+
+st.dataframe(country_pivot,hide_index=True)
