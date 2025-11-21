@@ -37,8 +37,6 @@ selected_date=st.sidebar.slider(
 
 # World Map Filters
 st.sidebar.header("World Map Filters")
-platforms_map=["All"]+sorted(map_df_raw["platform"].dropna().unique())
-selected_platforms_map=st.sidebar.multiselect("Platform", platforms_map, default=["All"], key="map_platforms")
 genres_map=["All"]+sorted(map_df_raw["genres"].dropna().unique())
 selected_genres_map=st.sidebar.multiselect("Genres", genres_map, default=["All"], key="map_genres")
 games_map=["All"]+sorted(map_df_raw["title"].dropna().unique())
